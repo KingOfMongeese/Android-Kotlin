@@ -2,7 +2,7 @@ An example run through
 
 Even or Odd
 Enter a number:
->45
+45
 45.0 is odd
 
 Palidrome
