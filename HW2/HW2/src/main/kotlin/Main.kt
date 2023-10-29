@@ -7,6 +7,7 @@ fun main(args: Array<String>)
     isPalindrome()
     sumAndAverageOfArray()
     searchArrayStrings()
+    sub2Matrices()
 }
 
 fun evenOrOdd()
@@ -34,7 +35,9 @@ fun isPalindrome()
     println("\nPalidrome")
     val s = Scanner(System.`in`)
     print("Enter a string\n>")
+
     val input = s.nextLine()
+
     val cleanStr = input.lowercase().replace(Regex("[^a-zA-Z0-9]"),"")
     val isPal =  cleanStr == cleanStr.reversed()
 
@@ -88,4 +91,63 @@ fun searchArrayStrings()
     val search = s.nextLine()
 
     println("${search.trim()} ${if (search.trim() in strList) "is" else "is not"} in the list")
+}
+
+fun sub2Matrices()
+{
+    val s = Scanner(System.`in`)
+
+    print("\nMatrix Subtraction A - B\nEnter the rows x columns of the matrix (ex: 2x3) no space in between\n>")
+
+    val input = s.nextLine()
+    val para = input.split("x")
+
+    val rows = para[0].toInt()
+    val cols = para[1].toInt()
+    val matrixA = Array(rows){DoubleArray(cols)}
+    val matrixB = Array(rows){DoubleArray(cols)}
+    val matrixDiff = Array(rows){DoubleArray(cols)}
+
+    println("Enter the elements of the first matrix($rows X $cols):")
+    for(i in matrixA.indices)
+    {
+        for(j in matrixA[i].indices)
+        {
+            print("matrixA[$i][$j]:")
+            matrixA[i][j] = s.nextDouble()
+        }
+    }
+
+    println("Enter the elements of the second matrix($rows X $cols):")
+    for(i in matrixB.indices)
+    {
+        for(j in matrixB[i].indices) {
+            print("matrixB[$i][$j]:")
+            matrixB[i][j] = s.nextDouble()
+        }
+    }
+
+    for(i in matrixA.indices){
+        println("${matrixA[i].contentToString()} ")
+    }
+
+    println("Matrix B:")
+    for(i in matrixB.indices){
+        println("${matrixB[i].contentToString()} ")
+    }
+
+    for (row in matrixA.indices)
+    {
+        for (col in matrixB.indices)
+        {
+            matrixDiff[row][col] = matrixA[row][col] - matrixB[row][col]
+        }
+    }
+
+    println("\nDifference of the Matrices:")
+    for(i in matrixDiff.indices){
+        println("${matrixDiff[i].contentToString()} ")
+    }
+
+
 }
